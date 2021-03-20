@@ -1,0 +1,23 @@
+table.students {
+  border: 5px solid #d3d3d3;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  table-layout: fixed;
+  width: 80%;
+}
+
+td.students {
+  border: 1.5px solid #d3d3d3;
+  padding: 12px 0px;
+}
+
+th.students {
+  background-color: #d3d3d3;
+  font-size: 24px;
+  padding: 10px 0px;
+}
+
+.partial-gpa {
+  width: 20%;
+}

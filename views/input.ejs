@@ -22,9 +22,9 @@
               <label for="<%= course %>"><%= courses[course] %></label><br>
               <select name="<%= course %>" id="<%= course %>">
               <option disabled selected value> -- select an option -- </option>
-              <% validGrades.forEach(grade => { %>
+              <% for (const grade in gradeScale) { %>
                 <option class="grade" value="<%= grade %>"><%= grade %></option>
-              <% }) %>
+              <% } %>
               </select><br>
             </div>
           <% } %>

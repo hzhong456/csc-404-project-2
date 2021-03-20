@@ -1,33 +1,16 @@
 const express = require('express')
 const router = express.Router()
 
-const courses = {
-  csc141: 'CSC-141',
-  csc142: 'CSC-142',
-  csc240: 'CSC-240',
-  csc241: 'CSC-241',
-}
-
-const validGrades = [
-  'A',
-  'A-',
-  'B+',
-  'B',
-  'B-',
-  'C+',
-  'C',
-  'C-',
-  'D+',
-  'D',
-  'D-',
-  'F'
-]
+const {
+  courses,
+  gradeScale
+} = require('../lib/data')
 
 /* GET input page. */
 router.get('/', (req, res) => {
   res.render('input', {
     courses,
-    validGrades
+    gradeScale
   })
 })
 

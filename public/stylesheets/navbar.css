@@ -5,6 +5,10 @@ a.navbar {
   outline: 0;
 }
 
+a.navbar:hover {
+  color: white;
+}
+
 div.link-container {
   display: flex;
   align-content: center;

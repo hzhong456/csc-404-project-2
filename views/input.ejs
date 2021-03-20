@@ -1,10 +1,37 @@
 <!DOCTYPE html>
 <html>
   <%- include('partials/head') %>
+  <link rel='stylesheet' href='/stylesheets/input.css' />
   <body>
     <%- include('partials/navbar') %>
     <div class="main-container">
-      <h1 class="title">Input User Info Here</h1>
+      <h1 class="title">Student Record Input</h1>
+      <form class="student" action="/input" method="POST">
+        <div class="name">
+          <label for="lastName">Last Name</label><br>
+          <input type="text" id="lastName" name="lastName"><br>
+        </div>
+        <div class="name">
+          <label for="firstName">First Name</label><br>
+          <input type="text" id="firstName" name="firstName"><br>
+        </div>
+
+        <div class="grades">
+          <% for (const course in courses) { %>
+            <div class="course">
+              <label for="<%= course %>"><%= courses[course] %></label><br>
+              <select name="<%= course %>" id="<%= course %>">
+              <option disabled selected value> -- select an option -- </option>
+              <% validGrades.forEach(grade => { %>
+                <option class="grade" value="<%= grade %>"><%= grade %></option>
+              <% }) %>
+              </select><br>
+            </div>
+          <% } %>
+        </div>
+
+        <input class="submit" type="submit" value="submit" />
+      </form>
     </div>
     <%- include('partials/footer') %>
   </body>

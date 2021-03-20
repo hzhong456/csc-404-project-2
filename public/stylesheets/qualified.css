@@ -1,3 +1,8 @@
+div.main-container p {
+  font-size: 24px;
+  margin-bottom: 40px;
+}
+
 table.students {
   border: 5px solid #d3d3d3;
   border-collapse: collapse;

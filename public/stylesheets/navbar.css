@@ -1,0 +1,38 @@
+a.navbar {
+  display: block;
+  text-decoration: none;
+  color: #666666;
+  outline: 0;
+}
+
+div.link-container {
+  display: flex;
+  align-content: center;
+}
+
+div.navbar {
+  align-items: center;
+  display: flex;
+  height: 100px;
+  justify-content: space-between;
+  background-color: #d3d3d3;
+  margin-top: 0px;
+}
+
+img.title {
+  margin-left: 20px;
+}
+
+li.navbar {
+  list-style-type: none;
+}
+
+li.navbar-left {
+  margin-right: 35px;
+}
+
+ul.navbar {
+  margin: 0px;
+  padding-right: 50px;
+  padding-left: 0px;
+}

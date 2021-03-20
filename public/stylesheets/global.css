@@ -1,0 +1,20 @@
+body {
+  margin: 0px 0px;
+  height: 100%;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+h1.title {
+  margin-top: 80px;
+}
+
+html {
+  height: 100%;
+  color: #666666;
+}
+
+.main-container {
+  padding: 0px 100px;
+  margin-top: 30px;
+  text-align: center;
+}

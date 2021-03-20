@@ -33,14 +33,14 @@ router.get('/', (req, res) => {
 
 /* POST input page. */
 router.post('/', (req, res) => {
-  const {
-    firstName,
-    lastName,
-    csc141,
-    csc142,
-    csc240,
-    csc241
-  } = req.body
+  // const {
+  //   firstName,
+  //   lastName,
+  //   csc141,
+  //   csc142,
+  //   csc240,
+  //   csc241
+  // } = req.body
 
   res.json(req.body)
 })

@@ -6,6 +6,10 @@
     <%- include('partials/navbar') %>
     <div class="main-container">
       <h1 class="title">Student Record Input</h1>
+      <% console.log(locals.partialGPA) %>
+      <% if (locals.partialGPA) { %>
+        <p>Successfully input record for <%= student.firstName %> <%= student.lastName %> - <%= partialGPA %></p>
+      <% } %>
       <form class="student" action="/input" method="POST">
         <div class="name">
           <label for="lastName">Last Name</label><br>

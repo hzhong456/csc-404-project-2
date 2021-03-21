@@ -7,16 +7,16 @@
     <div class="main-container">
       <h1 class="title">Qualified Students</h1>
       <% if (totalStudents) { %>
-        <p><%= qualifiedStudents.length %>  out of <%= totalStudents %> students qualified</p>
-        <% if (qualifiedStudents.length) { %>
+        <p><%= students.length %>  out of <%= totalStudents %> students qualified</p>
+        <% if (students.length) { %>
           <table class="students">
             <tr>
               <th class="students">Last Name</th>
               <th class="students">First Name</th>
               <th class="students partial-gpa">Partial GPA</th>
             </tr>
-            <% if (locals.qualifiedStudents) { %>
-              <% qualifiedStudents.forEach(({ firstName, lastName, partialGPA }) => { %>
+            <% if (locals.students) { %>
+              <% students.forEach(({ firstName, lastName, partialGPA }) => { %>
                 <tr>
                   <td class="students"><%= lastName %></td>
                   <td class="students"><%= firstName %></td>

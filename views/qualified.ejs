@@ -3,35 +3,37 @@
   <%- include('partials/head') %>
   <link rel='stylesheet' href='/stylesheets/qualified.css' />
   <body>
-    <%- include('partials/navbar') %>
     <div class="main-container">
-      <h1 class="title">Qualified Students</h1>
-      <% if (totalStudents) { %>
-        <p><%= students.length %>  out of <%= totalStudents %> students qualified</p>
-        <% if (students.length) { %>
-          <table class="students">
-            <tr>
-              <th class="students">Last Name</th>
-              <th class="students">First Name</th>
-              <th class="students partial-gpa">Partial GPA</th>
-            </tr>
-            <% if (locals.students) { %>
-              <% students.forEach(({ firstName, lastName, partialGPA }) => { %>
-                <tr>
-                  <td class="students<% if (lastName.length >= 30 && lastName.length < 60) { %> small<% } %><% if (lastName.length >= 60) { %> xsmall<% } %>"><%= lastName %></td>
-                  <td class="students<% if (firstName.length >= 30 && firstName.length < 60) { %> small<% } %><% if (firstName.length >= 60) { %> xsmall<% } %>"><%= firstName %></td>
-                  <td class="students partial-gpa"><%= partialGPA %></td>
-                </tr>
-              <% }) %>
-            <% } %>
-          </table>
+      <%- include('partials/navbar') %>
+      <div class="body-container">
+        <h1 class="title">Qualified Students</h1>
+        <% if (totalStudents) { %>
+          <p><%= students.length %>  out of <%= totalStudents %> students qualified</p>
+          <% if (students.length) { %>
+            <table class="students">
+              <tr>
+                <th class="students">Last Name</th>
+                <th class="students">First Name</th>
+                <th class="students partial-gpa">Partial GPA</th>
+              </tr>
+              <% if (locals.students) { %>
+                <% students.forEach(({ firstName, lastName, partialGPA }) => { %>
+                  <tr>
+                    <td class="students<% if (lastName.length >= 30 && lastName.length < 60) { %> small<% } %><% if (lastName.length >= 60) { %> xsmall<% } %>"><%= lastName %></td>
+                    <td class="students<% if (firstName.length >= 30 && firstName.length < 60) { %> small<% } %><% if (firstName.length >= 60) { %> xsmall<% } %>"><%= firstName %></td>
+                    <td class="students partial-gpa"><%= partialGPA %></td>
+                  </tr>
+                <% }) %>
+              <% } %>
+            </table>
+          <% } else { %>
+            <p>No qualifying students to display at this time.</p>
+          <% } %>
         <% } else { %>
-          <p>No qualifying students to display at this time.</p>
+          <p>No student records found in the system.</p>
         <% } %>
-      <% } else { %>
-        <p>No student records found in the system.</p>
-      <% } %>
+      </div>
+      <%- include('partials/footer') %>
     </div>
-    <%- include('partials/footer') %>
   </body>
 </html>

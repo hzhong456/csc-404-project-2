@@ -3,6 +3,6 @@ div.footer {
   bottom: 0;
   height: 120px;
   width: 100%;
-  position: fixed;
+  position: relative;
   text-align: center;
 }

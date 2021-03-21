@@ -16,14 +16,14 @@
       <% } %>
 
       <form class="student" action="/input" method="POST">
-        <div class="name <% if (locals.errors && locals.errors.lastName) { %> error<% } %>">
+        <div class="name<% if (locals.errors && locals.errors.lastName) { %> error<% } %>">
           <label for="lastName">Last Name</label><br>
           <input type="text" id="lastName" name="lastName" <% if (locals.student && !locals.partialGPA ) { %>value="<%= student.lastName %>"<% } %><br>
         </div>
         <% if (locals.errors && locals.errors.lastName) { %>
           <p class="error-message"><%= locals.errors.lastName %></p>
         <% } %>
-        <div class="name <% if (locals.errors && locals.errors.firstName) { %> error<% } %>">
+        <div class="name<% if (locals.errors && locals.errors.firstName) { %> error<% } %>">
           <label for="firstName">First Name</label><br>
           <input type="text" id="firstName" name="firstName" <% if (locals.student && !locals.partialGPA ) { %>value="<%= student.firstName %>"><% } %><br>
         </div>

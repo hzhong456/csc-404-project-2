@@ -6,16 +6,25 @@ div.main-container p {
 table.students {
   border: 5px solid #d3d3d3;
   border-collapse: collapse;
+  font-family: 'Courier New', Courier, monospace;
   margin-bottom: 40px;
   margin-left: auto;
   margin-right: auto;
   table-layout: fixed;
-  min-width: 60%;
 }
 
 td.students {
   border: 1.5px solid #d3d3d3;
   padding: 12px 5px;
+}
+
+th.name-header {
+  width: 45%;
+}
+
+th.partial-gpa-header {
+  min-width: 160px;
+  width: 160px;
 }
 
 th.students {
@@ -25,5 +34,6 @@ th.students {
 }
 
 .partial-gpa {
-  width: 20%;
+  min-width: 160px;
+  width: 160px;
 }

@@ -12,9 +12,9 @@
           <% if (students.length) { %>
             <table class="students">
               <tr>
-                <th class="students">Last Name</th>
-                <th class="students">First Name</th>
-                <th class="students partial-gpa">Partial GPA</th>
+                <th class="students name-header">Last Name</th>
+                <th class="students name-header">First Name</th>
+                <th class="students partial-gpa-header">Partial GPA</th>
               </tr>
               <% if (locals.students) { %>
                 <% students.forEach(({ firstName, lastName, partialGPA }) => { %>

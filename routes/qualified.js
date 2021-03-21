@@ -1,13 +1,13 @@
 const express = require('express')
 const router = express.Router()
 
-const {
-  students
-} = require('../lib/data')
+// const {
+//   students
+// } = require('../lib/data')
 
-const {
-  calculateGPAs
-} = require('../lib/calculate')
+// const {
+//   calculateGPAs
+// } = require('../lib/calculate')
 
 /* GET qualified page. */
 router.get('/', (req, res) => {

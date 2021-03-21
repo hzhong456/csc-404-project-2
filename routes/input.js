@@ -61,13 +61,13 @@ router.post('/', (req, res) => {
     partialGPA = calcGPA(student)
   }
 
-    res.render('input', {
-      courses,
-      errors,
-      gradeScale,
-      student,
-      partialGPA
-    })
+  res.render('input', {
+    courses,
+    errors,
+    gradeScale,
+    student,
+    partialGPA
+  })
 })
 
 module.exports = router

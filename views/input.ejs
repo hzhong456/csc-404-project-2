@@ -8,7 +8,11 @@
       <h1 class="title">Student Record Input</h1>
       <% console.log(locals.partialGPA) %>
       <% if (locals.partialGPA) { %>
-        <p>Successfully input record for <%= student.firstName %> <%= student.lastName %> - <%= partialGPA %></p>
+        <div class="input-success">
+          <p>Successfully input record:</p>
+          <p><%= student.firstName %> <%= student.lastName %></p>
+          <p>Partial GPA - <%= partialGPA %></p>
+        </div>
       <% } %>
       <form class="student" action="/input" method="POST">
         <div class="name">

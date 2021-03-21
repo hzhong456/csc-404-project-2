@@ -5,9 +5,12 @@ const {
   students
 } = require('../lib/data')
 
+const {
+  calculateGPAs
+} = require('../lib/calculate')
+
 /* GET qualified page. */
 router.get('/', (req, res) => {
-  console.log(students)
   res.render('qualified')
 })
 

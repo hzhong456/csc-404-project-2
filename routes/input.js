@@ -11,6 +11,10 @@ const {
   calcGPA
 } = require('../lib/calculate')
 
+const {
+  normalizeName
+} = require('../lib/student')
+
 const formatStudentRecord = ({
   firstName,
   lastName,
@@ -18,16 +22,21 @@ const formatStudentRecord = ({
   csc142,
   csc240,
   csc241
-}) => ({
-  firstName,
-  lastName,
-  courseGrades: {
-    csc141,
-    csc142,
-    csc240,
-    csc241
+}) => {
+  firstName = normalizeName(firstName)
+  lastName = normalizeName(lastName)
+
+  return {
+    firstName,
+    lastName,
+    courseGrades: {
+      csc141,
+      csc142,
+      csc240,
+      csc241
+    }
   }
-})
+}
 
 /* GET input page. */
 router.get('/', (req, res) => {

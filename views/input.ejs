@@ -42,8 +42,6 @@
               <% } %>
               </select><br>
             </div>
-            <% console.log(locals.errors) %>
-            <% console.log(course) %>
             <% if (locals.errors && locals.errors[`courseGrades.${course}`]) { %>
               <p class="error-message"><%= locals.errors[`courseGrades.${course}`] %></p>
             <% } %>

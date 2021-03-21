@@ -51,8 +51,6 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const student = formatStudentRecord(req.body)
   const { errors, valid } = validateInput(student)
-  console.log(errors)
-
   let partialGPA
 
   if (valid) {

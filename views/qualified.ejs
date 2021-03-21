@@ -19,8 +19,8 @@
               <% if (locals.students) { %>
                 <% students.forEach(({ firstName, lastName, partialGPA }) => { %>
                   <tr>
-                    <td class="students<% if (lastName.length >= 30 && lastName.length < 60) { %> small<% } %><% if (lastName.length >= 60) { %> xsmall<% } %>"><%= lastName %></td>
-                    <td class="students<% if (firstName.length >= 30 && firstName.length < 60) { %> small<% } %><% if (firstName.length >= 60) { %> xsmall<% } %>"><%= firstName %></td>
+                    <td class="students"><%= lastName %></td>
+                    <td class="students"><%= firstName %></td>
                     <td class="students partial-gpa"><%= partialGPA %></td>
                   </tr>
                 <% }) %>

@@ -6,3 +6,8 @@ div.footer {
   position: relative;
   text-align: center;
 }
+
+div.footer p {
+  font-size: 12px;
+  text-align: center;
+}

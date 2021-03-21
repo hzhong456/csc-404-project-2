@@ -5,52 +5,54 @@
   <body>
     <div class="main-container">
       <%- include('partials/navbar') %>
-      <h1 class="title">Student Record Input</h1>
+      <div class="body-container">
+        <h1 class="title">Student Record Input</h1>
 
-      <% if (locals.partialGPA) { %>
-        <div class="input-success">
-          <p>Successfully input record:</p>
-          <p><%= student.firstName %> <%= student.lastName %></p>
-          <p>Partial GPA - <%= partialGPA %></p>
-        </div>
-      <% } %>
-
-      <form class="student" action="/input" method="POST">
-        <div class="name<% if (locals.errors && locals.errors.firstName) { %> error<% } %>">
-          <label for="firstName">First Name</label><br>
-          <input type="text" id="firstName" name="firstName" <% if (locals.student && !locals.partialGPA ) { %>value="<%= student.firstName %>"<% } %><br>
-        </div>
-        <% if (locals.errors && locals.errors.firstName) { %>
-          <p class="error-message"><%= locals.errors.firstName %></p>
-        <% } %>
-        <div class="name<% if (locals.errors && locals.errors.lastName) { %> error<% } %>">
-          <label for="lastName">Last Name</label><br>
-          <input type="text" id="lastName" name="lastName" <% if (locals.student && !locals.partialGPA ) { %>value="<%= student.lastName %>"><% } %><br>
-        </div>
-        <% if (locals.errors && locals.errors.lastName) { %>
-          <p class="error-message"><%= locals.errors.lastName %></p>
+        <% if (locals.partialGPA) { %>
+          <div class="input-success">
+            <p>Successfully input record:</p>
+            <p><%= student.firstName %> <%= student.lastName %></p>
+            <p>Partial GPA - <%= partialGPA %></p>
+          </div>
         <% } %>
 
-        <div class="grades">
-          <% for (const course in courses) { %>
-            <div class="course <% if (locals.errors && locals.errors[`courseGrades.${course}`]) { %> error<% } %>">
-              <label for="<%= course %>"><%= courses[course] %></label><br>
-              <select name="<%= course %>" id="<%= course %>">
-              <option disabled <% if (locals.partialGPA || !locals.student || (locals.student && student.courseGrades[course] === undefined)) { %> selected <% } %> value> -- select an option -- </option>
-              <% for (const grade in gradeScale) { %>
-                <option class="grade" <% if (!locals.partialGPA && (locals.student && student.courseGrades[course] === grade)) { %> selected <% } %> value="<%= grade %>"><%= grade %></option>
-              <% } %>
-              </select><br>
-            </div>
-            <% if (locals.errors && locals.errors[`courseGrades.${course}`]) { %>
-              <p class="error-message"><%= locals.errors[`courseGrades.${course}`] %></p>
-            <% } %>
+        <form class="student" action="/input" method="POST">
+          <div class="name<% if (locals.errors && locals.errors.firstName) { %> error<% } %>">
+            <label for="firstName">First Name</label><br>
+            <input type="text" id="firstName" name="firstName" <% if (locals.student && !locals.partialGPA ) { %>value="<%= student.firstName %>"<% } %><br>
+          </div>
+          <% if (locals.errors && locals.errors.firstName) { %>
+            <p class="error-message"><%= locals.errors.firstName %></p>
           <% } %>
-        </div>
+          <div class="name<% if (locals.errors && locals.errors.lastName) { %> error<% } %>">
+            <label for="lastName">Last Name</label><br>
+            <input type="text" id="lastName" name="lastName" <% if (locals.student && !locals.partialGPA ) { %>value="<%= student.lastName %>"><% } %><br>
+          </div>
+          <% if (locals.errors && locals.errors.lastName) { %>
+            <p class="error-message"><%= locals.errors.lastName %></p>
+          <% } %>
 
-        <input class="submit" type="submit" value="submit" />
-      </form>
+          <div class="grades">
+            <% for (const course in courses) { %>
+              <div class="course <% if (locals.errors && locals.errors[`courseGrades.${course}`]) { %> error<% } %>">
+                <label for="<%= course %>"><%= courses[course] %></label><br>
+                <select name="<%= course %>" id="<%= course %>">
+                <option disabled <% if (locals.partialGPA || !locals.student || (locals.student && student.courseGrades[course] === undefined)) { %> selected <% } %> value> -- select an option -- </option>
+                <% for (const grade in gradeScale) { %>
+                  <option class="grade" <% if (!locals.partialGPA && (locals.student && student.courseGrades[course] === grade)) { %> selected <% } %> value="<%= grade %>"><%= grade %></option>
+                <% } %>
+                </select><br>
+              </div>
+              <% if (locals.errors && locals.errors[`courseGrades.${course}`]) { %>
+                <p class="error-message"><%= locals.errors[`courseGrades.${course}`] %></p>
+              <% } %>
+            <% } %>
+          </div>
+
+          <input class="submit" type="submit" value="submit" />
+        </form>
+      </div>
+      <%- include('partials/footer') %>
     </div>
-    <%- include('partials/footer') %>
   </body>
 </html>

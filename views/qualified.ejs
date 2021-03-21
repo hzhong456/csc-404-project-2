@@ -6,24 +6,31 @@
     <%- include('partials/navbar') %>
     <div class="main-container">
       <h1 class="title">Qualified Students</h1>
-      <p>Displaying 2 out of 5 students who qualified:</p>
-      <table class="students">
-        <tr>
-          <th class="students">Last Name</th>
-          <th class="students">First Name</th>
-          <th class="students partial-gpa">Partial GPA</th>
-        </tr>
-        <tr>
-          <td class="students">Crackcorn</td>
-          <td class="students">Jimmy</td>
-          <td class="students partial-gpa">3.8</td>
-        </tr>
-        <tr>
-          <td class="students">Franklin</td>
-          <td class="students">Benny</td>
-          <td class="students partial-gpa">3.9</td>
-        </tr>
-      </table>
+      <% if (totalStudents) { %>
+        <p><%= qualifiedStudents.length %>  out of <%= totalStudents %> students qualified</p>
+        <% if (qualifiedStudents.length) { %>
+          <table class="students">
+            <tr>
+              <th class="students">Last Name</th>
+              <th class="students">First Name</th>
+              <th class="students partial-gpa">Partial GPA</th>
+            </tr>
+            <% if (locals.qualifiedStudents) { %>
+              <% qualifiedStudents.forEach(({ firstName, lastName, partialGPA }) => { %>
+                <tr>
+                  <td class="students"><%= lastName %></td>
+                  <td class="students"><%= firstName %></td>
+                  <td class="students partial-gpa"><%= partialGPA %></td>
+                </tr>
+              <% }) %>
+            <% } %>
+          </table>
+        <% } else { %>
+          <p>No qualifying students to display at this time.</p>
+        <% } %>
+      <% } else { %>
+        <p>No student records found in the system.</p>
+      <% } %>
     </div>
     <%- include('partials/footer') %>
   </body>

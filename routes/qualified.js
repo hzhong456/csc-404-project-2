@@ -1,17 +1,27 @@
 const express = require('express')
 const router = express.Router()
 
-// const {
-//   students
-// } = require('../lib/data')
+const {
+  students
+} = require('../lib/data')
 
-// const {
-//   calculateGPAs
-// } = require('../lib/calculate')
+const {
+  calcGPAs
+} = require('../lib/calculate')
+
+const {
+  filterQualified
+} = require('../lib/student')
 
 /* GET qualified page. */
 router.get('/', (req, res) => {
-  res.render('qualified')
+  const studentsWithGPAs = calcGPAs(students)
+  const qualifiedStudents = filterQualified(studentsWithGPAs)
+
+  res.render('qualified', {
+    qualifiedStudents,
+    totalStudents: students.length
+  })
 })
 
 module.exports = router

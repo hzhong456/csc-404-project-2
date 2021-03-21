@@ -12,7 +12,8 @@ const {
 } = require('../lib/calculate')
 
 const {
-  normalizeName
+  normalizeName,
+  validateInput
 } = require('../lib/student')
 
 const formatStudentRecord = ({
@@ -23,8 +24,8 @@ const formatStudentRecord = ({
   csc240,
   csc241
 }) => {
-  firstName = normalizeName(firstName)
-  lastName = normalizeName(lastName)
+  firstName = (firstName !== '')  ? normalizeName(firstName) : undefined
+  lastName = (lastName !== '') ? normalizeName(lastName) : undefined
 
   return {
     firstName,
@@ -49,13 +50,20 @@ router.get('/', (req, res) => {
 /* POST input page. */
 router.post('/', (req, res) => {
   const student = formatStudentRecord(req.body)
+  const { errors, valid } = validateInput(student)
+  console.log(errors)
 
-  students.push(student)
+  let partialGPA
 
-  const partialGPA = calcGPA(student)
+  if (valid) {
+    students.push(student)
+
+    partialGPA = calcGPA(student)
+  }
 
   res.render('input', {
     courses,
+    errors,
     gradeScale,
     student,
     partialGPA

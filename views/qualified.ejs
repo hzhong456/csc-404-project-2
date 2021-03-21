@@ -3,8 +3,8 @@
   <%- include('partials/head') %>
   <link rel='stylesheet' href='/stylesheets/qualified.css' />
   <body>
-    <%- include('partials/navbar') %>
     <div class="main-container">
+      <%- include('partials/navbar') %>
       <h1 class="title">Qualified Students</h1>
       <% if (totalStudents) { %>
         <p><%= students.length %>  out of <%= totalStudents %> students qualified</p>

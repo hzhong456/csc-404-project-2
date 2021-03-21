@@ -29,6 +29,7 @@ img.title {
 
 li.navbar {
   list-style-type: none;
+  font-size: 14px;
 }
 
 li.navbar-left {

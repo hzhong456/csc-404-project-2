@@ -12,15 +12,15 @@
           <% if (students.length) { %>
             <table class="students">
               <tr>
-                <th class="students">Last Name</th>
-                <th class="students">First Name</th>
-                <th class="students partial-gpa">Partial GPA</th>
+                <th class="students name-header">Last Name</th>
+                <th class="students name-header">First Name</th>
+                <th class="students partial-gpa-header">Partial GPA</th>
               </tr>
               <% if (locals.students) { %>
                 <% students.forEach(({ firstName, lastName, partialGPA }) => { %>
                   <tr>
-                    <td class="students<% if (lastName.length >= 30 && lastName.length < 60) { %> small<% } %><% if (lastName.length >= 60) { %> xsmall<% } %>"><%= lastName %></td>
-                    <td class="students<% if (firstName.length >= 30 && firstName.length < 60) { %> small<% } %><% if (firstName.length >= 60) { %> xsmall<% } %>"><%= firstName %></td>
+                    <td class="students"><%= lastName %></td>
+                    <td class="students"><%= firstName %></td>
                     <td class="students partial-gpa"><%= partialGPA %></td>
                   </tr>
                 <% }) %>

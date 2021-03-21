@@ -5,6 +5,7 @@ body {
 }
 
 .body-container {
+  margin-bottom: 20px;
   min-height: 1200px;
 }
 

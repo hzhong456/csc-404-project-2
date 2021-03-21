@@ -10,12 +10,20 @@ table.students {
   margin-left: auto;
   margin-right: auto;
   table-layout: fixed;
-  width: 80%;
+  min-width: 80%;
 }
 
 td.students {
   border: 1.5px solid #d3d3d3;
   padding: 12px 0px;
+}
+
+td.students.small {
+  font-size: 14px;
+}
+
+td.students.xsmall {
+  font-size: 12px;
 }
 
 th.students {

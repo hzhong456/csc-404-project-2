@@ -37,7 +37,7 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
 
   // render the error page
   res.status(err.status || 500)
-  res.render('error')
+  return (err.status === 404) ? res.render('404') : res.render('error')
 })
 
 module.exports = app

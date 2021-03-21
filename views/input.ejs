@@ -6,6 +6,14 @@
     <%- include('partials/navbar') %>
     <div class="main-container">
       <h1 class="title">Student Record Input</h1>
+      <% console.log(locals.partialGPA) %>
+      <% if (locals.partialGPA) { %>
+        <div class="input-success">
+          <p>Successfully input record:</p>
+          <p><%= student.firstName %> <%= student.lastName %></p>
+          <p>Partial GPA - <%= partialGPA %></p>
+        </div>
+      <% } %>
       <form class="student" action="/input" method="POST">
         <div class="name">
           <label for="lastName">Last Name</label><br>
@@ -22,9 +30,9 @@
               <label for="<%= course %>"><%= courses[course] %></label><br>
               <select name="<%= course %>" id="<%= course %>">
               <option disabled selected value> -- select an option -- </option>
-              <% validGrades.forEach(grade => { %>
+              <% for (const grade in gradeScale) { %>
                 <option class="grade" value="<%= grade %>"><%= grade %></option>
-              <% }) %>
+              <% } %>
               </select><br>
             </div>
           <% } %>

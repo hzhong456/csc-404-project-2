@@ -1,48 +1,65 @@
 const express = require('express')
 const router = express.Router()
 
-const courses = {
-  csc141: 'CSC-141',
-  csc142: 'CSC-142',
-  csc240: 'CSC-240',
-  csc241: 'CSC-241',
-}
+const {
+  courses,
+  gradeScale,
+  students
+} = require('../lib/data')
 
-const validGrades = [
-  'A',
-  'A-',
-  'B+',
-  'B',
-  'B-',
-  'C+',
-  'C',
-  'C-',
-  'D+',
-  'D',
-  'D-',
-  'F'
-]
+const {
+  calcGPA
+} = require('../lib/calculate')
+
+const {
+  normalizeName
+} = require('../lib/student')
+
+const formatStudentRecord = ({
+  firstName,
+  lastName,
+  csc141,
+  csc142,
+  csc240,
+  csc241
+}) => {
+  firstName = normalizeName(firstName)
+  lastName = normalizeName(lastName)
+
+  return {
+    firstName,
+    lastName,
+    courseGrades: {
+      csc141,
+      csc142,
+      csc240,
+      csc241
+    }
+  }
+}
 
 /* GET input page. */
 router.get('/', (req, res) => {
   res.render('input', {
     courses,
-    validGrades
+    gradeScale
   })
 })
 
 /* POST input page. */
 router.post('/', (req, res) => {
-  // const {
-  //   firstName,
-  //   lastName,
-  //   csc141,
-  //   csc142,
-  //   csc240,
-  //   csc241
-  // } = req.body
+  const student = formatStudentRecord(req.body)
 
-  res.json(req.body)
+  students.push(student)
+
+  const partialGPA = calcGPA(student)
+
+  res.render('input', {
+    courses,
+    gradeScale,
+    student,
+    partialGPA
+  })
 })
 
 module.exports = router

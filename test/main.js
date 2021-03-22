@@ -216,7 +216,7 @@ const testStudentSorting = ({
     actual: actualQualifed.length,
     expected: expectedQualified
   })
-  
+
   const actualSorted = sortStudents(students)
 
   runComparisonTest({

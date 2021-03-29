@@ -15,7 +15,6 @@ const {
   isGPAQualified,
   normalizeName,
   sortStudents
-  // printQualifiedHeader
 } = require('../lib/student')
 
 const {

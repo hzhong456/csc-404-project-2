@@ -8,7 +8,7 @@
       <div class="body-container">
         <h1 class="title">Student Record Input</h1>
 
-        <% if (locals.partialGPA) { %>
+        <% if (locals.partialGPA !== undefined) { %>
           <div class="input-success">
             <p>Successfully input record:</p>
             <p><%= student.firstName %> <%= student.lastName %></p>
@@ -19,14 +19,14 @@
         <form class="student" action="/input" method="POST">
           <div class="name<% if (locals.errors && locals.errors.firstName) { %> error<% } %>">
             <label for="firstName">First Name</label><br>
-            <input type="text" id="firstName" name="firstName" <% if (locals.student && !locals.partialGPA ) { %>value="<%= student.firstName %>"<% } %><br>
+            <input type="text" id="firstName" name="firstName" <% if (locals.student && locals.partialGPA === undefined ) { %>value="<%= student.firstName %>"<% } %><br>
           </div>
           <% if (locals.errors && locals.errors.firstName) { %>
             <p class="error-message"><%= locals.errors.firstName %></p>
           <% } %>
           <div class="name<% if (locals.errors && locals.errors.lastName) { %> error<% } %>">
             <label for="lastName">Last Name</label><br>
-            <input type="text" id="lastName" name="lastName" <% if (locals.student && !locals.partialGPA ) { %>value="<%= student.lastName %>"><% } %><br>
+            <input type="text" id="lastName" name="lastName" <% if (locals.student && locals.partialGPA === undefined ) { %>value="<%= student.lastName %>"<% } %><br>
           </div>
           <% if (locals.errors && locals.errors.lastName) { %>
             <p class="error-message"><%= locals.errors.lastName %></p>
@@ -37,9 +37,9 @@
               <div class="course <% if (locals.errors && locals.errors[`courseGrades.${course}`]) { %> error<% } %>">
                 <label for="<%= course %>"><%= courses[course] %></label><br>
                 <select name="<%= course %>" id="<%= course %>">
-                <option disabled <% if (locals.partialGPA || !locals.student || (locals.student && student.courseGrades[course] === undefined)) { %> selected <% } %> value> -- select an option -- </option>
+                <option disabled <% if (locals.partialGPA !== undefined || !locals.student || (locals.student && student.courseGrades[course] === undefined)) { %> selected <% } %> value> -- select an option -- </option>
                 <% for (const grade in gradeScale) { %>
-                  <option class="grade" <% if (!locals.partialGPA && (locals.student && student.courseGrades[course] === grade)) { %> selected <% } %> value="<%= grade %>"><%= grade %></option>
+                  <option class="grade" <% if (locals.partialGPA === undefined && (locals.student && student.courseGrades[course] === grade)) { %> selected <% } %> value="<%= grade %>"><%= grade %></option>
                 <% } %>
                 </select><br>
               </div>

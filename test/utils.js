@@ -7,18 +7,6 @@ const testResults = {
   successCount: 0
 }
 
-// Original compareArrays function
-// const compareArrays = (actual, expected) => {
-//   if (!actual || !expected) return false
-//   if (actual.length !== expected.length) return false
-
-//   for (let i = 0; i < actual.length; i++)
-//     if (actual[i] !== expected[i]) return false
-
-//   return true
-// }
-
-// Updated compareArrays to be able to compare nested objects
 const compareArrays = (actual, expected) => {
   const keys1 = Object.keys(actual)
   const keys2 = Object.keys(expected)
@@ -45,7 +33,6 @@ const compareArrays = (actual, expected) => {
 const isObject = object => {
   return object != null && typeof object === 'object'
 }
-
 
 const compareValues = (actual, expected) => {
   if (Array.isArray(actual) && Array.isArray(expected))

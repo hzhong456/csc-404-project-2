@@ -15,7 +15,6 @@ const {
   isGPAQualified,
   normalizeName,
   sortStudents
-  // printQualifiedHeader
 } = require('../lib/student')
 
 const {
@@ -44,8 +43,6 @@ const {
 // Unit Tests for the regex and responses from the prompt schema
 //
 const testInputPromptSchema = ({
-  // actualMessage,
-  // expectedMessage,
   invalidInputs,
   prop,
   regex,
@@ -154,7 +151,6 @@ const testSingleStudentWithValidInput = ({
 const testStudentsGroupWithValidInput = ({
   students,
   studentSchema,
-  // expectedHeader,
   expectedPartialGPAs,
   expectedQualified
 }) => {
@@ -293,7 +289,6 @@ const runTest = () => {
   testStudentsGroupWithValidInput({
     students: qualifiedStudentsGroup,
     studentSchema: schema,
-    expectedHeader: 'Qualified Students:',
     expectedPartialGPAs: [3.7, 3.3, 3.2, 3.9],
     expectedQualified: qualifiedStudentsGroup.length
   })
@@ -304,7 +299,6 @@ const runTest = () => {
   testStudentsGroupWithValidInput({
     students: unqualifiedStudentsGroup,
     studentSchema: schema,
-    expectedHeader: 'No Students in List.',
     expectedPartialGPAs: [1.3, 1.9, 2.4, 1.3],
     expectedQualified: 0
   })
@@ -315,7 +309,6 @@ const runTest = () => {
   testStudentsGroupWithValidInput({
     students: mixedStudentGroup,
     studentSchema: schema,
-    expectedHeader: 'Qualified Students:',
     expectedPartialGPAs: [2.8, 3.8, 2.1, 1.8, 3.5, 1.6, 3.3, 4.0],
     expectedQualified: 5
   })

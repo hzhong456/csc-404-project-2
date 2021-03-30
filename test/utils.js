@@ -140,6 +140,5 @@ module.exports = {
   runInputTest,
   runValidationTest,
   starryPrinter,
-  compareValues,
-  compareArrays
+  compareValues
 }

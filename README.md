@@ -1,4 +1,4 @@
-# CSC-404 - Project 2
+# CSC-404 - Internship Qualifier
 
 ## Overview
 
@@ -24,7 +24,7 @@ Enter the `npm run lint` command to run the linter.  The linter helps to enforce
 
 If you want to run any of the commands with docker instead of locally, you can do so with the following steps:
 
-1. Build the docker image with `docker build -t project-2 .`
-2. To start the actual program, with the prompt -> `docker run --rm -p 3000:3000 -v $(pwd):/service project-2`
-3. To run the linter -> `docker run --rm -v $(pwd):/service project-2 npm run lint`
-4. To run the test suite -> `docker run --rm -v $(pwd):/service project-2 npm run test`
+1. Build the docker image with `docker build -t internship-qualifier .`
+2. To start the actual program, with the prompt -> `docker run --rm -p 3000:3000 -v $(pwd):/service internship-qualifier`
+3. To run the linter -> `docker run --rm -v $(pwd):/service internship-qualifier npm run lint`
+4. To run the test suite -> `docker run --rm -v $(pwd):/service internship-qualifier npm run test`

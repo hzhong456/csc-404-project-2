@@ -10,7 +10,7 @@ Enter `npm install` to install all dependencies before proceeding to the subsect
 
 ### Running Program
 
-Enter the `npm run start` command to start the program itself.  This will start the express server locally on port 3000 - visit https://localhost:3000 to access the app.
+Enter the `npm run start` command to start the program itself.  This will start the express server locally on port 3000 - visit http://localhost:3000 to access the app.
 
 ### Running Test Suite
 

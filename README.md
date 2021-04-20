@@ -24,7 +24,28 @@ Enter the `npm run lint` command to run the linter.  The linter helps to enforce
 
 If you want to run any of the commands with docker instead of locally, you can do so with the following steps:
 
-1. Build the docker image with `docker build -t internship-qualifier .`
-2. To start the actual program, with the prompt -> `docker run --rm -p 3000:3000 -v $(pwd):/service internship-qualifier`
-3. To run the linter -> `docker run --rm -v $(pwd):/service internship-qualifier npm run lint`
-4. To run the test suite -> `docker run --rm -v $(pwd):/service internship-qualifier npm run test`
+#### Run App Locally
+
+**The `docker compose` commands below require [Docker Desktop version 3.0.0](https://docs.docker.com/docker-for-mac/release-notes/#docker-desktop-300) or greater to work**
+
+1. Start up the docker containers with `docker compose up`.
+2. Navigate to http://localhost:3000 to see the running internship qualifier application.
+3. Navigate to http://localhost:8081 to see an admin console for the running `mongo` container.
+
+##### Connecting into `mongo` container
+
+**The `docker compose exec` command is available in [Docker Desktop versions 3.2.0](https://docs.docker.com/docker-for-mac/release-notes/#docker-desktop-320) or greater**
+
+After the containers have been started successfully with `docker compose up`, you can enter into the `mongo` container directly.  If you wanted to get into the `mongo` container and run the `mongo` command line you can use:
+
+`docker compose exec mongo mongo`
+
+Once you are in the container and running the `mongo` command line you can enter normal `mongo` commands like `show dbs`, `use <db_name`, `show collections`, etc.
+
+#### Run Test Suite
+
+1. Start up the docker containers using a different command for the test suite `docker compose run --rm app npm run test`.
+
+#### Run Linter
+
+1. Start up the docker containers using a different command for the linter `docker compose run --rm app npm run lint`.

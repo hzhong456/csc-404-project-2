@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 
+const studentRecord = require('../lib/model/student_model')
+
 const {
   courses,
   gradeScale,
@@ -24,7 +26,7 @@ const formatStudentRecord = ({
   csc240,
   csc241
 }) => {
-  firstName = (firstName !== '')  ? normalizeName(firstName) : undefined
+  firstName = (firstName !== '') ? normalizeName(firstName) : undefined
   lastName = (lastName !== '') ? normalizeName(lastName) : undefined
 
   return {
@@ -48,13 +50,42 @@ router.get('/', (req, res) => {
 })
 
 /* POST input page. */
+// router.post('/', (req, res) => {
+//   const student = formatStudentRecord(req.body)
+//   const { errors, valid } = validateInput(student)
+//   let partialGPA
+
+//   if (valid) {
+//     students.push(student)
+
+//     partialGPA = calcGPA(student)
+//   }
+
+//   res.render('input', {
+//     courses,
+//     errors,
+//     gradeScale,
+//     student,
+//     partialGPA
+//   })
+// })
+
 router.post('/', (req, res) => {
   const student = formatStudentRecord(req.body)
   const { errors, valid } = validateInput(student)
   let partialGPA
 
   if (valid) {
-    students.push(student)
+    studentRecord.create(student)
+      // .then(student => {
+      //   res.locals.redirect = '/users';
+      //   res.locals.student = student;
+      //   next();
+      // })
+      .catch(error => {
+        console.log(`Error saving user: ${error.message}`);
+        // next(error);
+      });
 
     partialGPA = calcGPA(student)
   }

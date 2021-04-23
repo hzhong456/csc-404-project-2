@@ -15,14 +15,16 @@ const mongoose = require('mongoose')
 
 // mongoose.Promise = global.Promise
 
-// mongoose.connect('mongodb://localhost:27017/students_db', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-// });
-mongoose.connect('mongodb://mongo:27017/students_db', {
+mongoose.connect('mongodb://localhost:27017/students_db', {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 2000,
 });
+// mongoose.connect('mongodb://mongo:27017/students_db', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   serverSelectionTimeoutMS: 2000
+// });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {

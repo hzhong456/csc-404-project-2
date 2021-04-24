@@ -14,15 +14,16 @@ router.get('/', (req, res, next) => {
       const studentsWithGPAs = calcGPAs(records)
       const qualifiedStudents = filterQualified(studentsWithGPAs)
       const sortedStudents = sortStudents(qualifiedStudents)
+      next()
       res.render('qualified', {
         students: sortedStudents,
         totalStudents: records.length
       })
-      next();
+      // next();
     })
     .catch(error => {
-      console.log(`Error fetching users: ${error.message}`);
-      next(error);
+      console.log(`Error fetching users: ${error.message}`)
+      next(error)
 
       // const studentsWithGPAs = calcGPAs(students)
 

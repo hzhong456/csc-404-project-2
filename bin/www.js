@@ -13,23 +13,25 @@ const mongoose = require('mongoose')
  * Connect to MongoDB.
  */
 
-// mongoose.Promise = global.Promise
-
 mongoose.connect('mongodb://localhost:27017/students_db', {
+  // mongoose.connect('mongodb://mongo:27017/students_db', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  serverSelectionTimeoutMS: 2000,
-});
-// mongoose.connect('mongodb://mongo:27017/students_db', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   serverSelectionTimeoutMS: 2000
+  serverSelectionTimeoutMS: 2000
+})
+  .then(res => {
+    console.log('Successfully connected to MongoDB using Mongoose!')
+  })
+  .catch(error => {
+    console.log('ERROR: ', error.message)
+  })
+
+
+// const db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', () => {
+//   console.log('Successfully connected to MongoDB using Mongoose!');
 // });
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-  console.log('Successfully connected to MongoDB using Mongoose!');
-});
 
 /**
  * Normalize a port into a number, string, or false.
@@ -66,16 +68,16 @@ const onError = error => {
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges')
-      process.exit(1)
-      break
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use')
-      process.exit(1)
-      break
-    default:
-      throw error
+  case 'EACCES':
+    console.error(bind + ' requires elevated privileges')
+    process.exit(1)
+    break
+  case 'EADDRINUSE':
+    console.error(bind + ' is already in use')
+    process.exit(1)
+    break
+  default:
+    throw error
   }
 }
 

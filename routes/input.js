@@ -70,22 +70,18 @@ router.get('/', (req, res) => {
 //   })
 // })
 
-router.post('/', (req, res) => {
+// Create mongoDB document
+router.post('/', (req, res, next) => {
   const student = formatStudentRecord(req.body)
   const { errors, valid } = validateInput(student)
   let partialGPA
 
   if (valid) {
     studentRecord.create(student)
-      // .then(student => {
-      //   res.locals.redirect = '/users';
-      //   res.locals.student = student;
-      //   next();
-      // })
       .catch(error => {
-        console.log(`Error saving user: ${error.message}`);
-        // next(error);
-      });
+        console.log(`Error saving user: ${error.message}`)
+        next(error)
+      })
 
     partialGPA = calcGPA(student)
   }
